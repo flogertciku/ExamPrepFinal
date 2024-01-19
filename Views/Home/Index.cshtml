@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class=" row text-center">
+    <h2>Idete</h2>
+    <div class="col-6">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Creator</th>
+      <th scope="col">DeadLine</th>
+      <th scope="col"> Nr Kontributeve </th>
+      <th scope="col"> Shuma Mbledhur</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var item in @ViewBag.idete){
+          <tr>
+      <th scope="row">@item.IdeId</th>
+      <td>@item.Name</td>
+      <td>@item.Creator.FirstName</td>
+      <td>@item.DeadLine</td>
+      <td>@item.kontributet.Count</td>
+      @{
+        int shuma = 0;
+        foreach(var kontribut in item.kontributet ){
+            shuma+= kontribut.Shuma;
+        }
+        <td>@shuma</td>
+      }
+      <td> @if(@ViewBag.userId ==@item.UserId ){<a asp-action="RemoveId" asp-route-itemid="@item.IdeId">Remove</a> }  <a asp-action="DetailsIde" asp-route-itemid="@item.IdeId">Details</a> </td>
+
+    </tr>
+    }
+  
+  
+   
+  </tbody>
+</table>
+    </div>
+   </div>

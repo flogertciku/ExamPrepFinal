@@ -1,0 +1,28 @@
+@model Ide
+
+
+<form asp-action="AddIde" method="post">
+
+       <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+        <span asp-validation-for="Name"></span>
+    </div>
+        <div>
+        <label asp-for="Shuma"></label>
+        <input asp-for="Shuma">
+        <span asp-validation-for="Shuma"></span>
+    </div>
+       <div>
+        <label asp-for="DeadLine"></label>
+        <input asp-for="DeadLine">
+        <span asp-validation-for="DeadLine"></span>
+    </div>
+     <div>
+        <label asp-for="Description"></label>
+        <input asp-for="Description">
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <input type="submit" value="Add Ide">
+</form>

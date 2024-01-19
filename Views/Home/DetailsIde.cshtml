@@ -1,0 +1,21 @@
+@model Ide
+<h2> @Model.Name</h2>
+<p> @Model.Description</p>
+<p>Created by : @Model.Creator.FirstName</p>
+ @{
+        int shuma = 0;
+        foreach(var kontribut in @Model.kontributet ){
+            shuma+= kontribut.Shuma;
+        }
+        <p>Shuma mbledhur @shuma</p>
+      }
+@foreach(var item in @Model.kontributet){
+    <p>@item.User.FirstName</p>
+}
+
+
+<form asp-action="AddMoney" asp-route-itemid="@Model.IdeId" method="post">
+    <label for="">Add kontribut</label>
+    <input type="number"  name="vlera">
+    <input type="submit" value="Dhuro">
+</form>
