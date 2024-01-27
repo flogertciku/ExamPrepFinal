@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f3e6e6;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #333;
+            color: #f4e7e7;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #0f0e0edf;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome</h1>
+        <style>
+            /* ... (previous styles remain unchanged) ... */
+    
+            .profile-buttons {
+                margin-top: 20px;
+            }
+    
+            .profile-buttons button {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <!-- ... (previous HTML remains unchanged) ... -->
+        <style>
+            /* ... (previous styles remain unchanged) ... */
+    
+            .profile-buttons {
+                margin-top: 20px;
+            }
+    
+            .profile-buttons button {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <!-- ... (previous HTML remains unchanged) ... -->
+    
+        <div class="container">
+    
+            <!-- ... (previous forms, profileInfo, networkList, invitationsList, and potentialConnectionsList div remain unchanged) ... -->
+    
+            <!-- Profile buttons -->
+            <div class="profile-buttons">
+                <button onclick="logout()">Logout</button>
+                <button onclick="viewMyProfile()">My Profile</button>
+                <button onclick="viewAllProfiles()">All Profiles</button>
+            </div>
+    
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Assuming you have JavaScript functions for logout and profile navigation
+                function logout() {
+                    console.log('Logged out');
+                    // Add your logic to handle the logout
+                    // Redirect to the login page or perform other necessary actions
+                }
+    
+                function viewMyProfile() {
+                    console.log('Viewing My Profile');
+                    // Add your logic to navigate to the user's own profile page
+                }
+    
+                function viewAllProfiles() {
+                    console.log('Viewing All Profiles');
+                    // Add your logic to navigate to a page displaying all user profiles
+                }
+            });
+        </script>
+    
+
+
+    </header>
+
+
+    <div class="container">
+
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <form id="registerForm">
+            <label for="newUsername">New Username:</label>
+            <input type="text" id="newUsername" name="newUsername" required>
+
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+ <div class="container">
+
+        <!-- ... (previous forms remain unchanged) ... -->
+
+        <div id="profileInfo">
+            <h2>Your Profile Information</h2>
+            <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+            <!-- Add more user information fields as needed -->
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Assuming you have JavaScript to handle form submissions and display user information
+            const registerForm = document.getElementById('registerForm');
+            const profileInfo = document.getElementById('profileInfo');
+            const profileUsername = document.getElementById('profileUsername');
+
+            registerForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+
+                // Assuming you have some logic to handle registration and obtain user information
+                const newUser = {
+                    username: document.getElementById('newUsername').value,
+                    // Add more user information fields as needed
+                };
+
+                // Display user information in the profile box
+                profileUsername.textContent = newUser.username;
+                profileInfo.style.display = 'block';
+            });
+        });
+    </script>
+
+
+    </div>
+    <style>
+        /* ... (previous styles remain unchanged) ... */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ... (previous HTML remains unchanged) ... -->
+
+    <div class="container">
+
+        <!-- ... (previous forms and profileInfo div remain unchanged) ... -->
+
+        <h2>Your Professional Network</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <!-- Add more table headers as needed -->
+                </tr>
+            </thead>
+            <tbody id="networkList">
+                <!-- Professional network list items will go here -->
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Assuming you have JavaScript to handle network list updates
+            const networkList = document.getElementById('networkList');
+
+            // Example data, replace this with actual data from your application
+            const professionalNetwork = [
+                { name: 'John Doe', position: 'Software Engineer' },
+                { name: 'Jane Smith', position: 'Data Scientist' },
+                { name: 'Alex Johnson', position: 'UX Designer' },
+                { name: 'Emily Davis', position: 'Marketing Manager' },
+                { name: 'Chris Williams', position: 'Project Manager' },
+                { name: 'Anna Lee', position: 'Graphic Designer' },
+                { name: 'Michael Brown', position: 'Financial Analyst' },
+                { name: 'Sophie Taylor', position: 'HR Specialist' },
+                { name: 'David Miller', position: 'Sales Representative' },
+                { name: 'Olivia White', position: 'Product Manager' },
+
+
+                // Add more network members as needed
+            ];
+
+            // Populate the network list table
+            professionalNetwork.forEach(member => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${member.name}</td>
+                    <td>${member.position}</td>
+                    <!-- Add more table cells as needed -->
+                `;
+                networkList.appendChild(row);
+            });
+        });
+    </script>
+
+<div class="container">
+
+    <!-- ... (previous forms, profileInfo, and networkList div remain unchanged) ... -->
+
+    <h2>Invitations</h2>
+    <table class="invitations-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="invitationsList">
+            <!-- Invitations list items will go here -->
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Assuming you have JavaScript to handle invitations list updates
+        const invitationsList = document.getElementById('invitationsList');
+
+        // Example data, replace this with actual data from your application
+        const invitations = [
+            { name: 'Alice Johnson' },
+            { name: 'Bob Smith' },
+            { name: 'Charlie Davis' },
+            { name: 'David Miller' },
+            { name: 'Emily White' },
+            { name: 'Frank Brown' },
+            { name: 'Grace Taylor' },
+            { name: 'Henry Lewis' },
+            { name: 'Ivy Martinez' },
+            // Add more invitations as needed
+        ];
+
+        // Populate the invitations list table
+        invitations.forEach(invitation => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${invitation.name}</td>
+                <td class="actions-buttons">
+                    <button onclick="acceptInvitation('${invitation.name}')">Accept</button>
+                    <button onclick="ignoreInvitation('${invitation.name}')">Ignore</button>
+                </td>
+            `;
+            invitationsList.appendChild(row);
+        });
+    });
+
+    // Assuming you have functions to handle the accept and ignore actions
+    function acceptInvitation(name) {
+        console.log(`Accepted invitation from ${name}`);
+        // Add your logic to handle the acceptance of the invitation
+    }
+
+    function ignoreInvitation(name) {
+        console.log(`Ignored invitation from ${name}`);
+        // Add your logic to handle the ignoring of the invitation
+    }
+</script>
+
+<style>
+    /* ... (previous styles remain unchanged) ... */
+table.potential-connections-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table.potential-connections-table th, table.potential-connections-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table.potential-connections-table th {
+    background-color: #f2f2f2;
+}
+
+.actions-buttons {
+    display: flex;
+}
+
+.actions-buttons button {
+    margin-right: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- ... (previous HTML remains unchanged) ... -->
+
+<div class="container">
+
+<!-- ... (previous forms, profileInfo, networkList, and invitationsList div remain unchanged) ... -->
+
+<h2> Users you may want to connect with:</h2>
+<table class="potential-connections-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="potentialConnectionsList">
+        <!-- Potential connections list items will go here -->
+    </tbody>
+</table>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Assuming you have JavaScript to handle potential connections list updates
+    const potentialConnectionsList = document.getElementById('potentialConnectionsList');
+
+    // Example data, replace this with actual data from your application
+    const potentialConnections = [
+        { name: 'Eva Anderson' },
+        { name: 'George Taylor' },
+        { name: 'Hannah Brown' },
+        { name: 'Isaac Martinez' },
+        // Add more potential connections as needed
+    ];
+
+    // Populate the potential connections list table
+    potentialConnections.forEach(connection => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${connection.name}</td>
+            <td class="actions-buttons">
+                <button onclick="connectWithUser('${connection.name}')">Connect</button>
+            </td>
+        `;
+        potentialConnectionsList.appendChild(row);
+    });
+
+    // Function to handle connecting with a user
+    function connectWithUser(name) {
+        console.log(`Connected with ${name}`);
+        // Add your logic to handle the connection with the user
+
+        // Optionally, you can remove the connected user from the potential connections list
+        potentialConnections.splice(potentialConnections.findIndex(connection => connection.name === name), 1);
+        updatePotentialConnectionsList();
+    }
+
+    // Function to update the potential connections list table
+    function updatePotentialConnectionsList() {
+        clearTable(potentialConnectionsList);
+
+        potentialConnections.forEach(connection => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${connection.name}</td>
+                <td class="actions-buttons">
+                    <button onclick="connectWithUser('${connection.name}')">Connect</button>
+                </td>
+            `;
+            potentialConnectionsList.appendChild(row);
+        });
+    }
+
+    // Function to clear a table body
+    function clearTable(tableBody) {
+        while (tableBody.firstChild) {
+            tableBody.removeChild(tableBody.firstChild);
+        }
+    }
+});
+</script>
+
+
+
+</body>
+</html>
+

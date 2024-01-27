@@ -9,6 +9,7 @@ public class Ide
     public string Name { get; set; } 
     public int Shuma { get; set; }
     public int? UserId {get;set;}
+    public string? ImagePath { get; set; }
     public DateTime DeadLine {get;set;}
     public string Description { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;

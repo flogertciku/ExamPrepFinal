@@ -1,7 +1,7 @@
 @model Ide
 
 
-<form asp-action="AddIde" method="post">
+<form asp-action="AddIde" method="post" enctype="multipart/form-data">
 
        <div>
         <label asp-for="Name"></label>
@@ -22,6 +22,10 @@
         <label asp-for="Description"></label>
         <input asp-for="Description">
         <span asp-validation-for="Description"></span>
+    </div>
+    <div>
+        <label for="imageFile">Upload Image</label>
+        <input type="file" name="imageFile">
     </div>
 
     <input type="submit" value="Add Ide">

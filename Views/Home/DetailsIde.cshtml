@@ -1,6 +1,8 @@
 @model Ide
 <h2> @Model.Name</h2>
 <p> @Model.Description</p>
+<img src="@Url.Content("~/" + Model.ImagePath)" alt="Uploaded Image" width="100">
+
 <p>Created by : @Model.Creator.FirstName</p>
  @{
         int shuma = 0;

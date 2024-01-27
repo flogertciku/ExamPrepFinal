@@ -29,12 +29,14 @@ public class SessionCheckAttribute : ActionFilterAttribute
 public class HomeController : Controller
 {
     private MyContext _context; 
+     private readonly IEmailSender _emailSender;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger,MyContext context)
+    public HomeController(ILogger<HomeController> logger,MyContext context,IEmailSender emailSender)
     {
         _logger = logger;
          _context = context;  
+          _emailSender = emailSender;
     }
     [SessionCheck]
     public IActionResult Index()
@@ -50,13 +52,16 @@ public class HomeController : Controller
     }
 
     [HttpPost("Register")]
-    public IActionResult Register(User forma){
+    public async Task<IActionResult> Register(User forma){
         if (ModelState.IsValid)
         {
              PasswordHasher<User> Hasher = new PasswordHasher<User>();   
             // Updating our newUser's password to a hashed version         
-            forma.Password = Hasher.HashPassword(forma, forma.Password);            
+            forma.Password = Hasher.HashPassword(forma, forma.Password);  
+                    // generate a new code 
+                    // forma.validateEmail = newCode
             //Save your user object to the database 
+            // await _emailSender.SendEmailAsync(forma.Email, "VerifyEmail", $"Your Email {forma.Email} is used, and verify it using this coe : passcode.");
             _context.Add(forma);
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -99,10 +104,31 @@ public class HomeController : Controller
     }
      [SessionCheck]
     [HttpPost("AddIde")]
-    public IActionResult AddIde(Ide form){
+    public async Task<IActionResult> AddIde(IFormFile imageFile,Ide form){
         if (ModelState.IsValid)
         {
+          if (imageFile != null && imageFile.Length > 0)
+{
+            var fileName = Path.GetFileName(imageFile.FileName);
+            // Relative path inside the wwwroot folder
+            var relativePath = Path.Combine("images", fileName);
+
+            // Absolute path to where the file will be saved on the server
+            var absolutePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", relativePath);
+
+            using (var fileStream = new FileStream(absolutePath, FileMode.Create))
+            {
+                imageFile.CopyTo(fileStream);
+            }
+
+            // Set the relative path to be stored in the database
+            form.ImagePath = relativePath; 
+        }
             form.UserId = HttpContext.Session.GetInt32("UserId");
+            User loggedUser = _context.Users.FirstOrDefault(e=>e.UserId==HttpContext.Session.GetInt32("UserId") );
+             // Assuming the user's email is stored in User.Identity
+            await _emailSender.SendEmailAsync(loggedUser.Email, "New Ide Created", $"Your Ide {form.Name} has been created.");
+
             _context.Add(form);
             _context.SaveChanges();
             return RedirectToAction("Index");
